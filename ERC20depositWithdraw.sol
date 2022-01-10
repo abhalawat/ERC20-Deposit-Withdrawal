@@ -4,10 +4,12 @@ contract DW {
     int bal;
     uint deadline;
     uint today;
+    address owner;
 
 
     constructor() public{
         bal =1;
+        owner = msg.sender;
         today = block.timestamp;
     }
 
@@ -22,6 +24,7 @@ contract DW {
 
     function withdraw(int amt) public {
         require(block.timestamp >= today + 3600 seconds);
+        require(owner == msg.sender);
         bal = bal - amt;
     }
 }
