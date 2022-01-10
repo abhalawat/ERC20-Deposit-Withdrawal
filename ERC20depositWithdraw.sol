@@ -3,7 +3,7 @@ pragma solidity 0.4.25;
 contract DW {
     int bal;
     uint deadline;
-     uint today;
+    uint today;
 
 
     constructor() public{
@@ -17,7 +17,7 @@ contract DW {
 
     function deposit(int amt) public {
         bal = bal +amt;
-        }
+    }
 
 
     function withdraw(int amt) public {
