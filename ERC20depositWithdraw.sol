@@ -1,4 +1,4 @@
-pragma solidity 0.4.25;
+pragma solidity 0.8.11;
 
 contract DW {
     int bal;
@@ -8,11 +8,13 @@ contract DW {
 
 
     constructor() public{
-        bal =1;
+        bal = 1;
         owner = msg.sender;
         today = block.timestamp;
     }
-
+    function getAddress() view public returns(address){
+        return msg.sender;
+    }
     function getBalance() view public returns(int){
         return bal;
     }
@@ -24,7 +26,7 @@ contract DW {
 
     function withdraw(int amt) public {
         require(block.timestamp >= today + 3600 seconds);
-        require(owner == msg.sender);
+        require(msg.sender==owner);
         bal = bal - amt;
     }
 }
